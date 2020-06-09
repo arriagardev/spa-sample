@@ -1,0 +1,44 @@
+<div class="row row animated fadeIn">
+
+    <div class="col-md-8">
+    
+        <h1 class="animated fadeIn">Resultados de la búsqueda: "<small>{{ termino }}</small>"</h1>
+        
+    </div>
+
+    <div class="col-md-4">
+
+        <a [routerLink]="['/heroes']" class="btn btn-danger btn-block">Regresar</a>
+    
+    </div>    
+
+</div>
+
+<div class="row animated fadeIn" *ngIf="heroes.length === 0">
+
+    <div class="col-md-12">
+
+        <div class="alert alert-info">
+            No existen resultados con el término: {{ termino }}
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card-columns animated fadeIn fast">    
+
+    <div class="card" *ngFor="let heroe of heroes; let i = index">
+        <img class="card-img-top img-fluid" [src]="heroe.img" [alt]="heroe.nombre">
+        <div class="card-body">
+            <h4 class="card-title">{{ heroe.nombre }}</h4>
+            <p class="card-text">{{ heroe.bio }}</p>
+            <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
+            <button (click)="verHeroe(i)" type="button" class="btn btn-outline-primary btn-block">
+                Ver más...
+            </button>
+            <!-- <a [routerLink]="['/heroe', 'index']" class="btn btn-outline-primary">Ver más link...</a>     -->
+        </div>
+    </div>        
+        
+</div>
